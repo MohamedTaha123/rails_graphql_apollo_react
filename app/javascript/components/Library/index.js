@@ -14,15 +14,28 @@ const LibraryQuery = gql`
   }
 `;
 
+const LibraryQuery_1 = gql `
+
+  {
+    items {
+      id
+      title
+      user {
+        email
+        fullName
+      }
+    }
+  }
+`
 export default () => (
-  <Query query={LibraryQuery}>
+  <Query query={LibraryQuery_1}>
     {({ data, loading }) => (
       <div>
         {loading
           ? 'loading...'
           : data.items.map(({ title, id, user }) => (
               <div key={id}>
-                <b>{title}</b> {user ? `added by ${user.email}` : null}
+                <b>{title}</b> {user ? `added by ${user.fullName}` : null}
               </div>
             ))}
       </div>
