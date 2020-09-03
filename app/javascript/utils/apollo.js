@@ -6,23 +6,17 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { ApolloLink, Observable } from 'apollo-link';
-
-// Create cache
 export const createCache = () => {
-	const cache = InMemoryCache();
-	if (process.env.NODE_ENV === "development") {
-		window.secretVariableToStoreCache = cache;
-	}
-	return cache;
-}
-
+  const cache = new InMemoryCache();
+  if (process.env.NODE_ENV === 'development') {
+    window.secretVariableToStoreCache = cache;
+  }
+  return cache;
+};
 
 // getToken from meta tags
-const getToken = () => {
-	document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-}
-
+const getToken = () =>
+  document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 const token = getToken();
 const setTokenForOperation = async operation =>
   operation.setContext({
@@ -30,7 +24,6 @@ const setTokenForOperation = async operation =>
       'X-CSRF-Token': token,
     },
   });
-
 // link with token
 const createLinkWithToken = () =>
   new ApolloLink(
@@ -51,7 +44,7 @@ const createLinkWithToken = () =>
           if (handle) handle.unsubscribe();
         };
       })
-  );
+ );
 
 // log erors
 const logError = (error) => console.error(error);
@@ -70,14 +63,11 @@ const createErrorLink = () => onError(({ graphQLErrors, networkError, operation 
 })
 
 // http link
-const CreateHttpLink = () => {
-	new HttpLink({
-		uri: '/graghql',
-		credentials: 'include'
-	})
-}
+const createHttpLink = () => new HttpLink({
+  uri: '/graphql',
+  credentials: 'include',
+})
 
-// Create Client
 export const createClient = (cache, requestLink) => {
   return new ApolloClient({
     link: ApolloLink.from([
