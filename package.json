@@ -2,7 +2,6 @@
   "name": "martian_library",
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "^7.10.4",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -22,6 +21,11 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.1",
     "webpack-dev-server": "^3.11.0"
   }
 }
