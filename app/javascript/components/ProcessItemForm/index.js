@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import cs from "./styles";
 
 const ProcessItemForm = ({
@@ -21,37 +23,45 @@ const ProcessItemForm = ({
           <div className="error">{errors.fullMessages.join('; ')}</div>
         </div>
       )}
-      <input
-        type="text"
-        placeholder="title"
+     
+      <TextField 
+        id="outlined-basic" 
+        label="Title" 
+        variant="outlined" 
         value={title}
         className={cs.input}
-        onChange={e => setTitle(e.currentTarget.value)}
-      />
-      <input
-        type="text"
-        placeholder="description"
+        onChange={e => setTitle(e.currentTarget.value)}/>
+      <TextField
+        id="outlined-basic" 
+        label="Description"
+        variant="outlined"
         value={description}
         className={cs.input}
         onChange={e => setDescription(e.currentTarget.value)}
       />
 
-      <input
-        type="text"
-        placeholder="url"
+      <TextField
+        id="outlined-basic" 
+        label="Image Url"
+        variant="outlined"
         value={imageUrl}
         className={cs.input}
         onChange={e => setImageUrl(e.currentTarget.value)}
       />
+
+        
       {loading ? (
         "...Loading"
       ) : (
-        <button
+        <Button
+          variant="outlined"
+          size="large"
+          color="secondary"
           onClick={() => onProcessItem({ title, description, imageUrl })}
           className={cs.button}
         >
           {buttonText}
-        </button>
+        </Button>
       )}
     </div>
   );

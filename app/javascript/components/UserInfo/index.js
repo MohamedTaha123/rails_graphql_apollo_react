@@ -60,7 +60,7 @@ const UserInfo = () => {
           }
 
           const { fullName } = data.me;
-          return <div className={cs.info}>😈 {fullName}</div>;
+          return <div className={cs.info}>{fullName}</div>;
         }}
       </Query>
     </div>
