@@ -5,7 +5,7 @@ module Mutations
     field :item, Types::ItemType, null: true
     field :errors, Types::ValidationErrorsType, null: true
 
-    def resolve(title:, description: nil, image_url: nil)
+    def resolve(attributes:)
       check_authentication!
 
       item = Item.new(attributes.to_h.merge(user: context[:current_user]))
@@ -13,7 +13,7 @@ module Mutations
       if item.save
         { item: item }
       else
-        { errors: item.errors.full_messages }
+        { errors: item.errors }
       end
     end
   end
