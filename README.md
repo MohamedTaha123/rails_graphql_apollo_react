@@ -1,24 +1,43 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##### Prerequisites
 
-Things you may want to cover:
+The setups steps expect following tools installed on the system.
 
-* Ruby version
+- Github
+- Ruby [2.5.1](https://github.com/mohamedtaha123/rails_graphql_apollo_react/blob/master/.ruby-version#L1)
+- Rails [6.0.0](https://github.com/mohamedtaha123/rails_graphql_apollo_react/blob/master/Gemfile#L12)
 
-* System dependencies
+##### 1. Check out the repository
 
-* Configuration
+```bash
+git clone git@github.com:mohamedtaha123/rails_graphql_apollo_react
+```
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+##### 2. Create and setup the database
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the following commands to create and setup the database.
 
-* Deployment instructions
+```ruby
+bundle exec rake db:create
+bundle exec rake db:setup
+```
 
-* ...
+##### 3. Start the Rails server
+
+You can start the rails server using the command given below.
+
+```ruby
+bundle exec rails s
+```
+
+And now you can visit the site with the URL http://localhost:3000
+
+#### 4. Run Tests (Rspec)
+You can start the tests using the command given below.
+
+```ruby
+bundle exec rspec 
+```
+
