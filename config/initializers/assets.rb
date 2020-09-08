@@ -8,4 +8,6 @@ Rails.application.config.assets.version = '1.0'
 # Add Yarn node_modules folder to the asset load path.
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
-Rails.application.config.assets.precompile += %w( graphiql/rails/application.js graphiql/rails/application.css ) if Rails.env.development?
+if Rails.env.development?
+  Rails.application.config.assets.precompile += %w[graphiql/rails/application.js graphiql/rails/application.css]
+end
